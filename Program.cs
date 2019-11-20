@@ -58,9 +58,12 @@ namespace StudentExercises
 
             students.ForEach(student =>
             {
+                // for each  over exercises pushed up
+                // look at the contains methods
+
                 student.Exercises.ForEach(exercise =>
                 {
-                    Console.WriteLine(exercise);
+                    Console.WriteLine($"{student.FirstName} {student.LastName} is working on exercises {exercise.Name}");
                 });
 
             });
