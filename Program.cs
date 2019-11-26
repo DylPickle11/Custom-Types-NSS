@@ -60,6 +60,16 @@ namespace StudentExercises
             students.Add(student7);
             students.Add(student8);
 
+            cohort2.Students.Add(student1);
+            cohort3.Students.Add(student2);
+            cohort1.Students.Add(student3);
+            cohort2.Students.Add(student4);
+            cohort2.Students.Add(student5);
+            cohort3.Students.Add(student6);
+            cohort1.Students.Add(student7);
+            cohort2.Students.Add(student8);
+
+
             // Create 3, or more, instructors and assign them to one of the cohorts.
             Instructor instructor1 = new Instructor("Mo", "Moson", "MoMo", 77, "Being Mo-mazing");
             Instructor instructor2 = new Instructor("Madie", "Madson", "MadMad", 78, "Being Mad-mazing");
@@ -125,11 +135,11 @@ namespace StudentExercises
 
             cohortNumber.ForEach(cohort =>
             {
-                Console.WriteLine($"Cohort group:{cohort.Students}");
+                Console.WriteLine($"Cohort group: {cohort.CohortName}");
 
                 cohort.Students.ForEach(student =>
                 {
-                    Console.WriteLine($"Students:{student}");
+                    Console.WriteLine($"Students:{student.FirstName} {student.LastName}");
                 });
             });
             Console.WriteLine("/////////////////////////////////////");
@@ -161,18 +171,28 @@ namespace StudentExercises
             {
                 Console.WriteLine($"All Students without an exercise: {student.LastName}, {student.FirstName}");
             });
+            Console.WriteLine("/////////////////////////////////////");
 
             // Which student is working on the most exercises?
 
             List<Student> mostExercises = students.Where(student => student.Exercises.Count > 0).ToList();
 
-            mostExercises.ForEach(student =>
+            var busiestStudents = mostExercises.OrderBy(student => student.Exercises.Count).Last();
+            Console.WriteLine($"Student with most exercises: {busiestStudents.FirstName} {busiestStudents.LastName}");
+            Console.WriteLine("/////////////////////////////////////");
+
+            // How many students in each cohort?
+            var byCohort = students.GroupBy(student => student.CohortNumber).ToList();
+            var byCohortCount = byCohort.Count;
+            Console.WriteLine(byCohortCount);
+
+
+            byCohort.ForEach(cohort =>
             {
-                Console.WriteLine(student.Exercises.Max());
+                Console.WriteLine($"There are {cohort.Count()} students in cohort {cohort.Key}");
             });
 
 
-            // How many students in each cohort?
         }
     }
 }

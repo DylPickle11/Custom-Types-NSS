@@ -5,7 +5,7 @@ namespace StudentExercises
     public class Cohort
     {
         public string CohortName { get; set; }
-        public List<string> Students = new List<string>();
+        public List<Student> Students = new List<Student>();
         public List<string> Instructors = new List<string>();
 
         public Cohort(string cohortname)
