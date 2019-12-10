@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 namespace StudentExercises
 {
-    public class Instructor
+    public class Instructor : NSSPerson
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string SlackHandle { get; set; }
-        public int CohortNumber { get; set; }
+        public override string FirstName { get; set; }
+        public override string LastName { get; set; }
+        public override string SlackHandle { get; set; }
+        public override int CohortNumber { get; set; }
         public string Speciality { get; set; }
         public void assign(Student student, Exercise exercise)
         {
